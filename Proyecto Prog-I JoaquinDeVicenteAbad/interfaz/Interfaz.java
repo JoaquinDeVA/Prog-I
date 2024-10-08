@@ -5,14 +5,11 @@ import dominio.*;
 
 public class Interfaz {
 
-    public Interfaz(){
-
-    }
-
     public static void InterfazCatalogo(ListaOrdenadores catalogo){
 
         int x=1;
         Scanner sc= new Scanner(System.in);
+        catalogo.CargarLista();
 
         while (x != 0){
             System.out.println("OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catálogo \n"+"2.Añadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
@@ -36,10 +33,11 @@ public class Interfaz {
                 
             }
             if(x==0){ // Se cierra el interfaz
-                
+                catalogo.GuardarLista();
                 System.out.println("Cerrando menu");
             }
         }
+        sc.close();
     }
-    
+
 }
