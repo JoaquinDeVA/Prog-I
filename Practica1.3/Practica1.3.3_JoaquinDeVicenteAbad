@@ -1,0 +1,34 @@
+Practica 1.3
+
+Ejercicio 19:
+
+En el pre incremento el valor de la variable se incrementa antes de realizar la operacion pertinente. 
+El post incremento es justo el proceso contrario.
+
+y=x++; primero se guardaria el valor de x en y, luego se aumentaria su valor en 1.
+
+Practica 1.4
+
+Ejercicio 20:
+
+1) Mostrara por pantalla los valores de i. Estos seran desde el 1 hasta al 10 (incluidos) primero imprime el valor y luego lo suma.
+
+2) Mostrara por pantalla los valores de i. Estos seran desde el 1 hasta al 10 (incluidos). Una vez completado el bucle suma el valor.
+
+3)Imprimira 2 veces los valores del 1 al 10 incluidos (ya que primero imprime y luego suma) 
+pero en los 2 siguientes bucles no se cumple la condicion de i<0; 1>0 por lo que solo imprimira el valor 1 
+(el bucle do while primero ejecuta y solo las siguientes ejecuciones comprobara si se cumple la condicion).
+
+4)Va guardando en una variable suma la suma de todos los valores del 1 al 100.
+
+5)Hara exactamente lo mismo que el anterior solo que la actualizacion esta escrita en los parametros del bucle.
+
+6) primero la variable j imprimira el valor del array en 0 (ya que primero cumple la condición y luego actualiza su valor).
+Los bucles while y for inprimiran correctamente todos los valores del array x, donde la diferencia reside en donde va implementada la actualizacion.
+El bucle do while imprimira los valores del array tambien.
+
+7)Nos devolvera un error("Indice fuera de rango")
+
+8)Porque primero ejecuta el codigo y luego comprueba la condicion que es lo contrario al bucle while.
+
+9)El bucle do-while lo usare cuando quiero que se ejecute el codigo al menos una vez.
