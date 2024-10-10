@@ -5,6 +5,11 @@ public class Localidad {
     private String nombre;
     private int numeroDeHabitantes;
 
+    public Localidad ( String nombre, int numeroDeHabitantes){
+
+        this.nombre = nombre;
+        this.numeroDeHabitantes = numeroDeHabitantes;
+    }
     public void setNombre ( String nombre){
 
         this.nombre=nombre;
@@ -21,6 +26,7 @@ public class Localidad {
         
         return numeroDeHabitantes;
     }
+    @Override
     public String toString(){
         return nombre +": " + numeroDeHabitantes;
     }
