@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Municipio {
     
-    ArrayList<Localidad> ListaMunicipio = new ArrayList<>();
+    private String nombreMunicipio;
+    private ArrayList<Localidad> ListaMunicipio = new ArrayList<>();
     
     public int habitantesTotales(){
         int total=0;
@@ -14,5 +15,15 @@ public class Municipio {
         return total;
     }
 
+    public String toString(){
+
+        StringBuilder texto = new StringBuilder();
+        texto.append("El municipio " +nombreMunicipio + "consta de las siguientes Localidades: \n \t");
+        for(Localidad localidad : ListaMunicipio){
+            texto.append(localidad.toString()+"\n");
+        }
+
+        return texto.toString();
+    }
 
 }
