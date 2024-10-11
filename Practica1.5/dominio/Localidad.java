@@ -28,7 +28,7 @@ public class Localidad {
     }
     @Override
     public String toString(){
-        return nombre +": " + numeroDeHabitantes;
+        return nombre +": " + numeroDeHabitantes + " Habitantes";
     }
     
 }

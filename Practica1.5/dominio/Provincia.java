@@ -7,6 +7,14 @@ public class Provincia {
     private String nombreProvincia;
     private ArrayList<Municipio> ListaProvincia = new ArrayList<>();
 
+    public Provincia (String nombreProvincia ){
+        
+        this.nombreProvincia=nombreProvincia;
+    }
+    public void annadirMunicipio(Municipio municipio){
+
+        ListaProvincia.add(municipio);
+    }
     public int habitantesTotales(){
         
         int total=0;
@@ -20,7 +28,7 @@ public class Provincia {
     public String toString(){
 
         StringBuilder texto = new StringBuilder();
-        texto.append("La provincia "+nombreProvincia +"consta de los siguientes municipios: \n \t");
+        texto.append("La provincia "+nombreProvincia +" consta de los siguientes municipios: \n \t");
         for(Municipio municipio : ListaProvincia){
             texto.append(municipio.toString());
         }
