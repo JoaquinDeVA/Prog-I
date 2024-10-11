@@ -31,6 +31,10 @@ private ArrayList<Ordenador> ListaOrdenadores = new ArrayList<>();
         
         ListaOrdenadores.get(i).setPrecio(precio);
     }
+    public int Size(){
+
+        return ListaOrdenadores.size();
+    }
     
     public void GuardarLista(){
 
