@@ -2,6 +2,7 @@ package dominio;
 
 public class Ordenador {
     
+//Clase Ordenador con su constructor de tres parametros sus setters,getters y metodo toString
     private String modelo;
     private boolean portatil;
     private double precio;

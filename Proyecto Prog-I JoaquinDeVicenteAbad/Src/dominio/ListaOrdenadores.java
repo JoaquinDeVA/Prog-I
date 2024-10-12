@@ -6,7 +6,26 @@ import java.util.Scanner;
 
 public class ListaOrdenadores{
 
-private ArrayList<Ordenador> ListaOrdenadores = new ArrayList<>();
+/* 
+ *Clase ListaOrdenadores que es un arrayList del tipo Ordenador. 
+ *
+ *tenemos definido  un constructor vacio.
+ *
+ * Un metodo annadir que anade un ordenador al arrayList,
+ * un metodo eliminar que elimina un ordenador del arrayList,
+ * 
+ *Una serie de metodos modificar que modifican respectivamente diferentes atributos 
+ *dados el indice del arrayList.
+ *
+ *Un metodo Size que devuelve el tamaño de nuestro ArrayList.
+ * 
+ * Un metodo GuardarLista que escribe en el fichero CATALOGO.csv los datos del
+ * arrayList y un metodo CargarLista que carga los datos de CATALOGO.csv en el arrayList.
+ * 
+ * 
+ * Y el metodo toString que devuelve un String con los datos del arrayList.
+ */
+    private ArrayList<Ordenador> ListaOrdenadores = new ArrayList<>();
 
     public ListaOrdenadores(){
     
@@ -57,9 +76,9 @@ private ArrayList<Ordenador> ListaOrdenadores = new ArrayList<>();
             Scanner sc = new Scanner(fichero);
             sc.useDelimiter(",|\n");
             while (sc.hasNext()){
-                String modelo = sc.next();
-                boolean portatil = Boolean.parseBoolean(sc.next());
-                double precio = Double.parseDouble(sc.next());
+                String modelo = sc.next();  
+                boolean portatil = Boolean.parseBoolean(sc.next()); // pasar de String a boolean
+                double precio = Double.parseDouble(sc.next());      // pasar de String a double
                 ListaOrdenadores.add(new Ordenador(modelo,portatil,precio));
             }
             sc.close();
@@ -68,9 +87,11 @@ private ArrayList<Ordenador> ListaOrdenadores = new ArrayList<>();
     
 
     public String toString(){
-
+        /* Para evitar la creacion de un nuevo String en memoria para cada iteracion  
+         * del bucle usamos la clase StringBuilder que es mutable.
+         */
         int contador=1;
-        StringBuilder resultado = new StringBuilder();
+        StringBuilder resultado = new StringBuilder(); 
         resultado.append("Catalogo Ordenadores:\n");
 
         for(Ordenador ordenador : ListaOrdenadores) {
