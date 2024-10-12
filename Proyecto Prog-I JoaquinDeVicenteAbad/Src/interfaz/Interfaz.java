@@ -14,7 +14,7 @@ public class Interfaz {
        
         while (x != 0){
             try{
-                System.out.println("OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catalogo \n"+"2.Añadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
+                System.out.println("OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catalogo \n"+"2.Annadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
                 //menu
                 System.out.println("Introduzca la opcion a elegir");
                 x = sc.nextInt();
@@ -43,7 +43,7 @@ public class Interfaz {
                     System.out.print(catalogo.toString()+"\n");
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
                     y = sc.nextInt()-1;
-                    System.out.println("¿Que deseas modificar: \n1. Modelo \n2. Portatil \n3. Precio");
+                    System.out.println("Que deseas modificar: \n1. Modelo \n2. Portatil \n3. Precio");
                     z = sc.nextInt();
                     if(y>=0 && y<catalogo.Size()){
                         
