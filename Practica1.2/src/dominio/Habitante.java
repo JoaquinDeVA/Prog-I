@@ -1,6 +1,7 @@
 package dominio;
 
-public class Habitante {
+import java.io.Serializable;
+public class Habitante implements Serializable{
       
     private String nombre;  
     private String apellido1;

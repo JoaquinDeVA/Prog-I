@@ -2,7 +2,7 @@ package dominio;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-public class OficinaPadron {
+public class OficinaPadron implements Serializable{
     
         private ArrayList<Habitante> habitantesPadron = new ArrayList<>();
 

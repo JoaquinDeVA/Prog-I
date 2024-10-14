@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 public class InterfazUsuario{
@@ -19,7 +20,7 @@ public class InterfazUsuario{
         leerPadron();
     }
     public boolean ejecutar(String[] instruccion){
-        OficinaPadron padron = new OficinaPadron();
+        
         if(instruccion.length == 1){
 
             if(instruccion[0].equalsIgnoreCase("mostrar")){
@@ -27,24 +28,22 @@ public class InterfazUsuario{
                 mostrarOficinaPadron(padron);
             }else if(instruccion[0].equalsIgnoreCase("ayuda")){
 
-                System.out.println("Opciones: mostrar \n  ayuda \n añadir <nombre><apellido1><apellido2> \n salir");
+                System.out.println("Opciones:\n mostrar \n ayuda \n annadir <nombre><apellido1><apellido2> \n salir");
             }else if (instruccion[0].equalsIgnoreCase("salir")){
                             
                 escribirPadron();
                 System.out.println("Finalizado con exito");
                 sc.close();
-                
                 return false;
-            }
-            else {System.out.println("Error en la instrucción. <ayuda> para mas información");}
+            }else {System.out.println("Error en la instruccion. <ayuda> para mas informacion");}
         }
-        else if (instruccion[0].equalsIgnoreCase("añadir") && instruccion.length == 4){
+        else if (instruccion[0].equalsIgnoreCase("annadir") && instruccion.length == 4){
                        
             padron.annadir(new Habitante(instruccion[1],instruccion[2], instruccion[3]));
-            System.out.println("Habitante añadido correctamente");
+            System.out.println("Habitante annadido correctamente");
         }else{
                        
-            System.out.println("Error en la instrucción");
+            System.out.println("Error en la instruccion");
         }
         return true;
     }
@@ -73,8 +72,8 @@ public class InterfazUsuario{
                 oo=new ObjectOutputStream(new FileOutputStream("padron.dat"));
                 oo.writeObject(padron);
                 oo.close();
-        }catch(Exception e){
-            System.out.print("Error al escribir fichero");
+        }catch(IOException e){
+            System.out.print("Error al escribir fichero" + e);
         }
 
     }

@@ -9,6 +9,13 @@
             "name": "principal",
             "request": "launch",
             "mainClass": "aplicacion.principal",
+            "projectName": "src_608a4575"
+        },
+        {
+            "type": "java",
+            "name": "principal",
+            "request": "launch",
+            "mainClass": "aplicacion.principal",
             "projectName": "Practica1.2_63dd3a20"
         },
         {
