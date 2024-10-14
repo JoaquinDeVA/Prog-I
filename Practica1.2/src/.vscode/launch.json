@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "principal",
+            "request": "launch",
+            "mainClass": "aplicacion.principal",
+            "projectName": "Practica1.2_63dd3a20"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,12 @@
             "request": "launch",
             "mainClass": "aplicacion.principal",
             "projectName": "Practica1.2_781d526f",
-            "args": ["mostrar","Pedro","Tomalgo","Hernandez"]
+            "args": [
+                "mostrar",
+                "Pedro",
+                "Tomalgo",
+                "Hernandez"
+            ]
         },
         {
             "type": "java",
