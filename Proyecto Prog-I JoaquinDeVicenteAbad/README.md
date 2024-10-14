@@ -1,5 +1,7 @@
 CATALOGO DE ORDENADORES
 
+## Descripción
+
 Este programa crea un catalogo de ordenadores guardando los datos en un fichero .CSV que a su vez podemos modificar o leer por 
 pantalla mediante la interfaz de texto del programa. Otras funciones son las de añadir nuevos ordenadores al catálogo o eliminarlos
 del mismo. El objetivo de este programa es hacer mas fácil la interacción con nuestros datos ya que el programa evita la introducción
@@ -8,20 +10,27 @@ esta relacionado al tamaño de la base de datos, en el caso de ser muy grande pu
 o encontrar problemas introducidos manualmente por lo que el programa esta destinado a evitar todos estos problemas inecesarios.
 Creado por Joaquin De Vicente Abad.
 
-## Descripción
-Breve descripción del proyecto y su funcionalidad.
 
 ## Instalación
-Instrucciones sobre cómo instalar y ejecutar el proyecto.
 
-## Uso
-Ejemplos de cómo utilizar el programa.
+Requesitos previos: Tener instalado java. Para comprobar nuestra instalacion ejecutaremos el comando "java --version"
+Para instalar el programa descarga y mueve al directorio pertinente el archivo .jar. Una vez preparado hay que abrir la consola de 
+comandos y movernos hasta el directorio. Una vez dentro ejecutar el siguiente comando: "-java -jar Main.jar" que procedera a ejecutar
+el codigo.
 
-## Notas para Desarrolladores
-Notas relevantes para otros desarrolladores, como dependencias y cómo contribuir.
 
-## Diagramas UML
-![Diagrama UML](ruta/a/tu/diagrama.png)
+## Ejemplos de uso
+
+
+## Documentacion
+
+## Estructura
+
+El código esta dividido en tres paquetes. Uno llamando aplicacion con nuestra clase main. Otro llamado dominio donde se define la clase
+Ordenador y su clase ArrayList ListaOrdenadores. Por ultimo el paquete interfaz con la clase Interfaz.
+
+## Contribuciones
+
 
 ## Licencia
 Este proyecto está licenciado bajo la Apache License 2.0.

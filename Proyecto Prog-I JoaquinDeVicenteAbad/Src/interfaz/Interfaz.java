@@ -2,25 +2,42 @@ package interfaz;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import dominio.*;
 
 public class Interfaz {
 /* La clase Interfaz contiene la interfaz de texto que permite al usuario gestionar
  * el catalogo y trabajar con el.
  * 
- * Hay un solo metodo InterfazCatalogo que dado como parametro un objeto ListaOrdenadores
- * carga en el los datos del fichero y comienza un bucle que solo se rompe cuando el usuario
- * lo desea.
+ * Tiene un contructor que ejecuta su metodo leerPadron.
  * 
- * Este metodo permite añadir un ordenador dado el indice que le corresponde, 
+ * Un metodo interfazCatalogo que es un bucle que lee por pantalla los instrucciones 
+ * del usuario y que solo se rompe cuando el usuario lo desea.
+ * 
+ * Ademas este metodo permite añadir un ordenador dado el indice que le corresponde, 
  * eliminar un ordenador de la misma manera, imprimir el catalogo para mostrar este indice,
  * modificar un atributo de un ordenador dado su indice y cerrar el programa guardando los cambios.
+ * 
+ * 
+ * Un metodo leerPadron que crea un objeto ObjectInputStream para leer los datos objecto del fichero
+ * CATALOGO.dat. En caso de fallar en cargar los datos a catalogo lo inicializa.
+ * Un metodo escribirPadron que crea un objeto ObjectOutputStream para guardar nuestro objeto
+ * ListaOrdenadores en un archivo llamado CATALOGO.dat.
  */
-    public static void InterfazCatalogo(ListaOrdenadores catalogo){
+    private ListaOrdenadores catalogo;
+    private Scanner sc = new Scanner(System.in);
 
-        int x=1;
-        Scanner sc= new Scanner(System.in);
-        catalogo.CargarLista();
+    public Interfaz(){
+        
+        leerPadron();
+    }
+
+    public void InterfazCatalogo(){
+
+        int x=1;        
        
         while (true){
             try{
@@ -32,12 +49,12 @@ public class Interfaz {
                     
                     System.out.print(catalogo.toString()+"\n");
                 }
-                if(x==2){ //añadir
+                 else if(x==2){ //añadir
                     System.out.println("Introduzca los siguientes parametros: Modelo,si se trata de un portatil y precio");
                     catalogo.annadir(new Ordenador(sc.next(),sc.nextBoolean(),sc.nextDouble()));
                     System.out.println("");
                 }
-                if(x==3){ //eliminar
+                 else if(x==3){ //eliminar
                     int y=0;
                     System.out.print(catalogo.toString()+"\n"); //Imprime el catalogo
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
@@ -48,7 +65,7 @@ public class Interfaz {
                         System.out.println("\n \n OPCION NO VALIDA \n \n");
                     }
                 }
-                if(x==4){ //modificar
+                 else if(x==4){ //modificar
                     int y,z=0;
                     System.out.print(catalogo.toString()+"\n"); //Imprime el catalogo
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
@@ -73,21 +90,41 @@ public class Interfaz {
                         }
                     }
                 }
-                if(x==0){ // Se cierra el interfaz
-                    catalogo.GuardarLista();
-                    System.out.println("Cerrando menu");
+                else if(x==0){ // Se cierra el interfaz y se guarda el objeto
+                    
+                    System.out.println("Guardando datos y cerrando menu");
+                    escribirPadron();
                     break;
                 }
-                if(x > 4 || x < 0){ // Estructura de control para valores fuera de rango
+                else{ // Estructura de control para valores fuera de rango
                     System.out.println("\n \n OPCION NO VALIDA \n \n");
                 }
             }catch(InputMismatchException ex){  //Maneja la introduccion de datos invalidos
                 System.out.println("\n \n EL DATO INTRODUCIDO NO ES VALIDO \n \n");
                 sc.next();
             }
-        
+
         }
     sc.close();
     }
+    private void leerPadron(){
 
+        ObjectInputStream oi;
+        try{
+            oi = new ObjectInputStream(new FileInputStream("CATALOGO.dat")); 
+            catalogo = (ListaOrdenadores)oi.readObject();
+            oi.close();
+        } catch (Exception e){
+            catalogo = new ListaOrdenadores();
+        }
+    }
+    private void escribirPadron(){
+
+        ObjectOutputStream oo;
+        try{
+            oo= new ObjectOutputStream(new FileOutputStream("CATALOGO.dat"));
+            oo.writeObject(catalogo);
+            oo.close();
+        } catch (Exception e){ System.out.print("Error al guardar los datos en el fichero");}
+    }
 }
