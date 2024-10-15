@@ -2,12 +2,10 @@ CATALOGO DE ORDENADORES
 
 ## Descripción
 
-Este programa crea un catalogo de ordenadores guardando los datos en un fichero .CSV que a su vez podemos modificar o leer por 
+Este programa crea un catalogo de ordenadores guardando los datos en un fichero .dat que a su vez podemos modificar o leer por 
 pantalla mediante la interfaz de texto del programa. Otras funciones son las de añadir nuevos ordenadores al catálogo o eliminarlos
 del mismo. El objetivo de este programa es hacer mas fácil la interacción con nuestros datos ya que el programa evita la introducción
-de datos inválidos y guía al usuario para indicarle como proceder para cada una de las acciones. Otros problema que puede suceder
-esta relacionado al tamaño de la base de datos, en el caso de ser muy grande puede ser dificilmente legible o dificil de modificar
-o encontrar problemas introducidos manualmente por lo que el programa esta destinado a evitar todos estos problemas inecesarios.
+de datos inválidos y guía al usuario para indicarle como proceder para cada una de las acciones posibles.
 Creado por Joaquin De Vicente Abad.
 
 
@@ -21,7 +19,22 @@ el codigo.
 
 ## Ejemplos de uso
 
+Una vez tenemos el codigo en ejecucion veremos el siguiente contenido:
+![Imagen que muestra el menu por pantalla](imagenes/image-1.png)
 
+Para mostrar lo que tenemos en nuestro catalogo introduciremos el numero correspondiente: 1
+![Catalogo con un ordenador](imagenes/image-2.png)
+
+Introducimos un nuevo ordenador en nuestro catalogo
+![menu para añadir](imagenes/image-3.png)
+![Nuevo catalogo](imagenes/image-4.png)
+
+Por ultimo modificamos para indicar que el segundo elemento no se trata de un portatil
+![menu de modificacion](imagenes/image-5.png)
+![nuevo catalogo](imagenes/image-6.png)
+
+Cerramos el programa y guardamos los datos.
+![Menu de guardado](imagenes/image-7.png)
 ## Documentacion
 
 ## Estructura

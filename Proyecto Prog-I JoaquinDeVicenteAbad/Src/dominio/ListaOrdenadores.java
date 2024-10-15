@@ -37,9 +37,9 @@ public class ListaOrdenadores implements Serializable{
 
         ListaOrdenadores.get(i).setModelo(modelo);
     }
-    public void modificarPortatil(int i,boolean portatil){
+    public void modificarPortatil(int i){
         
-        ListaOrdenadores.get(i).setPortatil(portatil);
+        ListaOrdenadores.get(i).setPortatil();
     }
     public void modificarPrecio(int i,double precio){
         

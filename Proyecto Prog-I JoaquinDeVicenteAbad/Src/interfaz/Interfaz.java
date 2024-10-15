@@ -79,13 +79,12 @@ public class Interfaz {
                             catalogo.modificarModelo(y,sc.next());
                         }
                         if(z==2){
-                            System.out.println("Introduzca el nuevo estado de portatil");   
-                            catalogo.modificarPortatil(y,sc.nextBoolean());
+                            catalogo.modificarPortatil(y);
                         }
                         if(z==3){
                             System.out.println("Introduzca el nuevo precio");
                             catalogo.modificarPrecio(y,sc.nextDouble());
-                        }else{
+                        }else if (z>3 || z<0){
                             System.out.println("Opcion no valida");
                         }
                     }

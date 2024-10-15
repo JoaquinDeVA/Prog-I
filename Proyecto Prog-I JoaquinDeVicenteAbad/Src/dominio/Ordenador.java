@@ -20,9 +20,13 @@ public class Ordenador implements Serializable {
         
         this.modelo=modelo;
     }
-    public void setPortatil(boolean portatil){
+    public void setPortatil(){ //Como el constructor siempre define un valor podemos cambiarlo por el contrario
         
-        this.portatil=portatil;
+        if(portatil == false){
+            portatil = true;
+        }else{
+            portatil = false;
+        }
     }
     public void setPrecio(double precio){
         
