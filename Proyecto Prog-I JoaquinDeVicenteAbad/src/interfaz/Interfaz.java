@@ -38,34 +38,39 @@ public class Interfaz {
     public void InterfazCatalogo(){
 
         int x=1;        
-       
         while (true){
             try{
                 //Menu de Opciones
-                System.out.println("OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catalogo \n"+"2.Annadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
+                System.out.println(" OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catalogo \n"+"2.Annadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
                 System.out.println("Introduzca la opcion a elegir");
                 x = sc.nextInt();
-                if(x==1){ //imprimir catalogo
-                    
-                    System.out.print(catalogo.toString()+"\n");
+                if(x==1){ 
+                    //imprimir catalogo
+                    System.out.println(catalogo.toString());
                 }
-                 else if(x==2){ //añadir
+                 else if(x==2){
+                    //añadir
                     System.out.println("Introduzca los siguientes parametros: Modelo,si se trata de un portatil y precio");
                     catalogo.annadir(new Ordenador(sc.next(),sc.nextBoolean(),sc.nextDouble()));
-                    System.out.println("");
+                    exito();
                 }
-                 else if(x==3){ //eliminar
+                 else if(x==3){
+                    //eliminar
                     int y=0;
-                    System.out.print(catalogo.toString()+"\n"); //Imprime el catalogo
+                    System.out.println(catalogo.toString()); //Imprime el catalogo
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
                     y=sc.nextInt()-1;
                     if(y>=0 && y<catalogo.Size()){ //Verifica que y(ordenador) existe en el ArrayList
+                        
                         catalogo.eliminar(y);
+                        exito();
                     } else{
-                        System.out.println("\n \n OPCION NO VALIDA \n \n");
+                        
+                        System.out.println("El numero seleccionado no existe en el catalogo");
                     }
                 }
                  else if(x==4){ //modificar
+                   
                     int y,z=0;
                     System.out.print(catalogo.toString()+"\n"); //Imprime el catalogo
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
@@ -75,19 +80,30 @@ public class Interfaz {
                         System.out.println("Que deseas modificar: \n1. Modelo \n2. Portatil \n3. Precio");
                         z = sc.nextInt();
                         if(z==1){
+                            
                             System.out.println("Introduzca el nuevo modelo");
                             catalogo.modificarModelo(y,sc.next());
+                            exito();
                         }
-                        if(z==2){
+                        else if(z==2){
+                            
                             catalogo.modificarPortatil(y);
+                            exito();
                         }
-                        if(z==3){
+                        else if(z==3){
+                           
                             System.out.println("Introduzca el nuevo precio");
                             catalogo.modificarPrecio(y,sc.nextDouble());
-                        }else if (z>3 || z<0){
-                            System.out.println("Opcion no valida");
+                            exito();
+                        }else if (z>3 || z<1){
+                            
+                            System.out.println("Opcion no valida"); 
                         }
+                    }else{
+                        
+                        System.out.println("El numero seleccionado no existe en el catalogo");
                     }
+
                 }
                 else if(x==0){ // Se cierra el interfaz y se guarda el objeto
                     
@@ -125,5 +141,9 @@ public class Interfaz {
             oo.writeObject(catalogo);
             oo.close();
         } catch (Exception e){ System.out.print("Error al guardar los datos en el fichero");}
+    }
+    private void exito(){
+        
+        System.out.println("La operacion ha tenido exito\n");
     }
 }
