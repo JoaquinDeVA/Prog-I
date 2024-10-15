@@ -20,20 +20,20 @@ el codigo.
 ## Ejemplos de uso
 
 Una vez tenemos el codigo en ejecucion veremos el siguiente contenido:
-![Imagen que muestra el menu por pantalla](imagenes/image-1.png)
+![Imagen que muestra el menu por pantalla](imagenes/image.png)
 
 Para mostrar lo que tenemos en nuestro catalogo introduciremos el numero correspondiente: 1
 ![Catalogo con un ordenador](imagenes/image-2.png)
 
-Introducimos un nuevo ordenador en nuestro catalogo
-![menu para añadir](imagenes/image-3.png)
+Introducimos un nuevo ordenador en nuestro catalogo: 2
+![Introduccion de un ordenador](imagenes/image-3.png)
 ![Nuevo catalogo](imagenes/image-4.png)
 
 Por ultimo modificamos para indicar que el segundo elemento no se trata de un portatil
-![menu de modificacion](imagenes/image-5.png)
+![Menu de modificacion](imagenes/image-5.png)
 ![nuevo catalogo](imagenes/image-6.png)
 
-Cerramos el programa y guardamos los datos.
+Cerramos el programa y se guardan los datos.
 ![Menu de guardado](imagenes/image-7.png)
 ## Documentacion
 

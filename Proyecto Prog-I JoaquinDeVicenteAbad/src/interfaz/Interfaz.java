@@ -10,7 +10,7 @@ import dominio.*;
 
 public class Interfaz {
 /* La clase Interfaz contiene la interfaz de texto que permite al usuario gestionar
- * el catalogo y trabajar con el.
+ * el catalogo y trabajar con el. Trabaja sobre un objeto tipo ListaOrdenadores.
  * 
  * Tiene un contructor que ejecuta su metodo leerPadron.
  * 
@@ -18,14 +18,17 @@ public class Interfaz {
  * del usuario y que solo se rompe cuando el usuario lo desea.
  * 
  * Ademas este metodo permite añadir un ordenador dado el indice que le corresponde, 
- * eliminar un ordenador de la misma manera, imprimir el catalogo para mostrar este indice,
+ * eliminar un ordenador de la misma manera, imprimir por pantalla el catalogo,
  * modificar un atributo de un ordenador dado su indice y cerrar el programa guardando los cambios.
  * 
  * 
  * Un metodo leerPadron que crea un objeto ObjectInputStream para leer los datos objecto del fichero
- * CATALOGO.dat. En caso de fallar en cargar los datos a catalogo lo inicializa.
+ * CATALOGO.dat. En caso de fallar en cargar los datos a catalogo porque no exista el archivo lo inicializa.
+ * 
  * Un metodo escribirPadron que crea un objeto ObjectOutputStream para guardar nuestro objeto
- * ListaOrdenadores en un archivo llamado CATALOGO.dat.
+ * ListaOrdenadores en un archivo llamado CATALOGO.dat. (Lo crea si no existe, metodo FileOutputStream)
+ * 
+ * Un metodo exito para indicar que la operacion se ha realizado.
  */
     private ListaOrdenadores catalogo;
     private Scanner sc = new Scanner(System.in);
@@ -59,7 +62,7 @@ public class Interfaz {
                     int y=0;
                     System.out.println(catalogo.toString()); //Imprime el catalogo
                     System.out.println("Introduzca el indice asignado al ordenador en el catalogo: ");
-                    y=sc.nextInt()-1;
+                    y=sc.nextInt()-1; //calcula el valor en el Array dado el indice
                     if(y>=0 && y<catalogo.Size()){ //Verifica que y(ordenador) existe en el ArrayList
                         
                         catalogo.eliminar(y);
@@ -79,25 +82,25 @@ public class Interfaz {
                         
                         System.out.println("Que deseas modificar: \n1. Modelo \n2. Portatil \n3. Precio");
                         z = sc.nextInt();
-                        if(z==1){
+                        if(z==1){ //modificar en nombre del modelo
                             
                             System.out.println("Introduzca el nuevo modelo");
                             catalogo.modificarModelo(y,sc.next());
                             exito();
                         }
-                        else if(z==2){
+                        else if(z==2){ //modificar si se trata de un portatil
                             
                             catalogo.modificarPortatil(y);
                             exito();
                         }
-                        else if(z==3){
+                        else if(z==3){ // modificar el precio
                            
                             System.out.println("Introduzca el nuevo precio");
                             catalogo.modificarPrecio(y,sc.nextDouble());
                             exito();
-                        }else if (z>3 || z<1){
+                        }else{
                             
-                            System.out.println("Opcion no valida"); 
+                            System.out.println("Opcion no valida\n"); 
                         }
                     }else{
                         
@@ -105,13 +108,15 @@ public class Interfaz {
                     }
 
                 }
-                else if(x==0){ // Se cierra el interfaz y se guarda el objeto
-                    
+                else if(x==0){ 
+                    // Se cierra el interfaz y se guarda el objeto
                     System.out.println("Guardando datos y cerrando menu");
                     escribirPadron();
-                    break;
+                    exito();
+                    break; //Se rompe el bucle while
                 }
-                else{ // Estructura de control para valores fuera de rango
+                else{ 
+                    // Estructura de control para valores fuera de rango
                     System.out.println("\n \n OPCION NO VALIDA \n \n");
                 }
             }catch(InputMismatchException ex){  //Maneja la introduccion de datos invalidos
@@ -123,7 +128,7 @@ public class Interfaz {
     sc.close();
     }
     private void leerPadron(){
-
+        //Lee los datos y inicializa catalogo como los datos del fichero o si falla en hacerlo lo inicializa en vacio
         ObjectInputStream oi;
         try{
             oi = new ObjectInputStream(new FileInputStream("CATALOGO.dat")); 
@@ -134,7 +139,7 @@ public class Interfaz {
         }
     }
     private void escribirPadron(){
-
+        //Guarda el objeto
         ObjectOutputStream oo;
         try{
             oo= new ObjectOutputStream(new FileOutputStream("CATALOGO.dat"));
@@ -143,7 +148,7 @@ public class Interfaz {
         } catch (Exception e){ System.out.print("Error al guardar los datos en el fichero");}
     }
     private void exito(){
-        
+        //Imprime que la operacion se ha realizado
         System.out.println("La operacion ha tenido exito\n");
     }
 }
