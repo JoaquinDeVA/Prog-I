@@ -1,10 +1,10 @@
-CATALOGO DE ORDENADORES
+#CATALOGO DE ORDENADORES
 
 ## Descripción
 
-Este programa crea un catalogo de ordenadores guardando los datos en un fichero .dat que a su vez podemos modificar o leer por 
+Este programa crea un catalogo de ordenadores que guarda los datos en un fichero .dat que a su vez podemos modificar o leer por 
 pantalla mediante la interfaz de texto del programa. Otras funciones son las de añadir nuevos ordenadores al catálogo o eliminarlos
-del mismo. El objetivo de este programa es hacer mas fácil la interacción con nuestros datos ya que el programa evita la introducción
+del mismo. El objetivo de este programa es hacer mas fácil la interaccion con los datos  y asegurar la fiabilidad de los datos ya que el programa evita la introducción
 de datos inválidos y guía al usuario para indicarle como proceder para cada una de las acciones posibles.
 Creado por Joaquin De Vicente Abad.
 
