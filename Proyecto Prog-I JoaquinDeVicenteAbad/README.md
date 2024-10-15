@@ -35,15 +35,17 @@ Por ultimo modificamos para indicar que el segundo elemento no se trata de un po
 
 Cerramos el programa y se guardan los datos.
 ![Menu de guardado](imagenes/image-7.png)
-## Documentacion
+
 
 ## Estructura
 
 El código esta dividido en tres paquetes. Uno llamando aplicacion con nuestra clase main. Otro llamado dominio donde se define la clase
 Ordenador y su clase ArrayList ListaOrdenadores. Por ultimo el paquete interfaz con la clase Interfaz.
 
+![Diagrama UML](imagenes/imageUML.png)
 ## Contribuciones
 
+Proyecto desarrollado en solitario.
 
 ## Licencia
 Este proyecto está licenciado bajo la Apache License 2.0.
