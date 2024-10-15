@@ -1,0 +1,48 @@
+# Ignorar archivos de sistema operativos
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de configuración de entornos locales
+.env
+*.env
+
+# Ignorar carpetas de compilación y temporales de Java
+/bin/
+/target/
+/build/
+
+# Ignorar archivos de log y temporales
+*.log
+*.tmp
+*.swp
+
+# Ignorar dependencias de Maven o Gradle
+/.mvn/
+/.gradle/
+/*.iml
+
+# Ignorar archivos de cache de IDEs
+/.idea/
+/.vscode/
+/*.class
+*.project
+*.classpath
+*.settings/
+
+# Ignorar archivos de compilación de Java, excepto los .jar
+*.war
+*.ear
+
+# Mantener archivos .jar
+#!*.jar   # Esta línea no es necesaria porque los .jar no están siendo ignorados
+
+# Ignorar archivos de prueba de salida
+/test-output/
+
+# Ignorar archivos generados por JavaDoc
+/apidocs/
+
+# Ignorar archivos generados por cobertura de código (Jacoco, Cobertura)
+*.exec
+*.ec
+*.em
