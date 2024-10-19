@@ -5,7 +5,8 @@ import dominio.*;
 public class Principal{
 
     public static void main(String[] args){
-    
+
+        //Provamos que podemos crear e imprimir por pantalla una provincia (Madrid con dos municipios y sus correspondientes localidades)
         Provincia madrid = new Provincia("Madrid");
         Municipio uno = new Municipio("Alcala de Henares");
         Municipio dos = new Municipio("Alcorcón");

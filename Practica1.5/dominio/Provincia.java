@@ -27,10 +27,13 @@ public class Provincia {
 
     public String toString(){
 
+        int n=1;
         StringBuilder texto = new StringBuilder();
-        texto.append("La provincia "+nombreProvincia +" consta de los siguientes municipios: \n \t");
+        texto.append("La provincia de "+nombreProvincia +" consta de los siguientes municipios: \n \t");
         for(Municipio municipio : ListaProvincia){
-            texto.append(municipio.toString());
+           
+            texto.append(n+") "+municipio.toString());
+            n++;
         }
         return texto.toString();
     }
