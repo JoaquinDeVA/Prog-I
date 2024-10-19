@@ -28,7 +28,7 @@ public class Municipio {
     public String toString(){
 
         StringBuilder texto = new StringBuilder();
-        texto.append("El municipio de " +nombreMunicipio + " consta de las siguientes Localidades: \n \t");
+        texto.append("El municipio de " +nombreMunicipio +" con "+ habitantesTotales() +" habitantes consta de las siguientes Localidades: \n \t");
         for(Localidad localidad : ListaMunicipio){
             texto.append(localidad.toString()+"\n \t");
         }

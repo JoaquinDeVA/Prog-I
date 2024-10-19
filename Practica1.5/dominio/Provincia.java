@@ -29,7 +29,7 @@ public class Provincia {
 
         int n=1;
         StringBuilder texto = new StringBuilder();
-        texto.append("La provincia de "+nombreProvincia +" consta de los siguientes municipios: \n \t");
+        texto.append("La provincia de "+nombreProvincia+" con "+ habitantesTotales() +" habitantes consta de los siguientes municipios: \n \t");
         for(Municipio municipio : ListaProvincia){
            
             texto.append(n+") "+municipio.toString());
