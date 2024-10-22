@@ -1,45 +1,38 @@
 package interfaz;
 
-import java.io.ObjectInputStream;
-import java.io.FileInputStream;
-
-import java.io.ObjectOutputStream;
-import java.io.FileOutputStream;
-
-import java.util.ArrayList;
-import dominio.Provincia;
+import dominio.*;
+import java.util.Scanner;
 
 public class Interfaz {
  
-    private ArrayList<Provincia> provincias;
+    private Scanner sc = new Scanner(System.in);
+    private Pais p= new Pais();
 
     public Interfaz(){
 
-        LeerDatos();
+        p=Pais.leer();
     }
     public void InterfazUsuario(){
 
 
         
     }
+    public void grabar(){
 
-    private void GuardarDatos(){
+        p.grabar();
+    }
+    public void aniadirProvincia(){
 
-        try{
-            
-            ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream("PROVINCIAS.dat"));
-            oo.writeObject(provincias);
-            oo.close();
-        } catch(Exception e){System.out.print("Error al guardar los datos");}
+        System.out.println("Nombre de la provincia:");
+        String nombre = sc.nextLine();
+        p.add(new Provincia(nombre));
 
     }
-    private void LeerDatos(){
-
-        try{
-            
-            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("PROVINCIAS.dat"));
-            provincias = (ArrayList<Provincia>) oi.readObject();
-            oi.close();
-        } catch(Exception e){provincias = new ArrayList<>();}
-    }
+    
+    /* AddProvincia
+     * AddLocalidad
+     * AddLocalidad
+     * 
+     */
+    
 }

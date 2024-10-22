@@ -10,16 +10,16 @@ public class Principal{
         Provincia madrid = new Provincia("Madrid");
         Municipio uno = new Municipio("Alcala de Henares");
         Municipio dos = new Municipio("Alcorcón");
-        madrid.annadirMunicipio(uno);
-        madrid.annadirMunicipio(dos);
+        madrid.add(uno);
+        madrid.add(dos);
         Localidad unoUno = new Localidad("Norte", 50000);
         Localidad unoDos = new Localidad("centro",80000);
-        uno.annadirLocalidad(unoUno);
-        uno.annadirLocalidad(unoDos);
+        uno.add(unoUno);
+        uno.add(unoDos);
         Localidad dosUno= new Localidad("Sur", 200000);
         Localidad dosDos= new Localidad("Este", 150);
-        dos.annadirLocalidad(dosUno);
-        dos.annadirLocalidad(dosDos);
+        dos.add(dosUno);
+        dos.add(dosDos);
         System.out.print(madrid.toString());
 
     }

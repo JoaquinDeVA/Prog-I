@@ -1,34 +1,38 @@
 package dominio;
 
-public class Localidad {
+import java.io.Serializable;
+
+public class Localidad implements Serializable {
 
     private String nombre;
-    private int numeroDeHabitantes;
+    private int poblacion;
 
-    public Localidad ( String nombre, int numeroDeHabitantes){
+    public Localidad ( String nombre, int poblacion){
 
         this.nombre = nombre;
-        this.numeroDeHabitantes = numeroDeHabitantes;
+        this.poblacion= poblacion;
     }
-    public void setNombre ( String nombre){
+    public String setNombre ( String nombre_){
 
-        this.nombre=nombre;
+        nombre=nombre_;
+        return nombre;
     }
-    public void setNumeroHabitantes(int numero){
+    public int setNumeroHabitantes(int numero){
         
-        numeroDeHabitantes=numero;
+        poblacion=numero;
+        return poblacion;
     }
     public String getNombre(){
 
         return nombre;
     }
-    public int getNumeroHabitantes(){
+    public int getPoblacion(){
         
-        return numeroDeHabitantes;
+        return poblacion;
     }
     @Override
     public String toString(){
-        return nombre +": " + numeroDeHabitantes + " Habitantes";
+        return nombre +" Poblacion: " + poblacion + " Habitantes";
     }
     
 }
