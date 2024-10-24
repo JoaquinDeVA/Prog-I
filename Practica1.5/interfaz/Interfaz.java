@@ -105,7 +105,7 @@ public class Interfaz {
             }
             for(int i=0;i<p.getProvincia(prov).size();i++){
 
-                System.out.println(p.getProvincia(prov).getMunicipio(i));
+                System.out.println(p.getProvincia(prov).getMunicipio(i).getNombre());
             }
             System.out.println("Introduzca el indice del municipio a la que annadir");
             mun = sc.nextInt();
@@ -134,11 +134,4 @@ public class Interfaz {
 
         System.out.println("Opciones:\n 0.Cerrar\n 1.Listar provincias\n 2.Annadir Provincia\n 3.Annadir Municipio\n 4.Annadir Localidad");
     }
-    
-    /* AddProvincia
-     * AddLocalidad
-     * AddLocalidad
-     * 
-     */
-    
 }
