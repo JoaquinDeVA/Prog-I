@@ -7,6 +7,12 @@ public class Pais implements Serializable {
     
     private String nombre;
     private ArrayList<Provincia> provincias;
+    
+    public Pais(String nombre){
+
+        this.nombre=nombre;
+        provincias = new ArrayList<>(); 
+    }
     public Pais add(Provincia provincia){
         
         provincias.add(provincia);
@@ -20,7 +26,8 @@ public class Pais implements Serializable {
         
         int poblacion=0;
         for(Provincia provincia:provincias){
-        poblacion+=provincia.getPoblacion();
+            
+            poblacion+=provincia.getPoblacion();
         }
         return poblacion;
     }
@@ -34,7 +41,16 @@ public class Pais implements Serializable {
     }
     public String toString(){
        
-        return "Pais: "+nombre+" Población: "+getPoblacion() +" habitantes\n"+provincias.toString()+"\n";
+        int n=0;
+        StringBuilder st = new StringBuilder();
+        st.append("Pais: "+nombre+" Población: "+getPoblacion() +" habitantes\n ");
+        for(Provincia provincia : provincias){
+            
+            st.append(n+") "+provincia.toString()+" ");
+            n++;
+        }
+        return st.toString();
+        
     }
     public int size(){
        
@@ -47,6 +63,7 @@ public class Pais implements Serializable {
             ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream("pais.ser"));
             oo.writeObject(this);
             oo.close();
+            System.out.println("Los datos se han guardado correctamente");
         } catch (Exception e){
 
             System.out.println("Error de escritura");
@@ -62,7 +79,7 @@ public class Pais implements Serializable {
             return p;
         } catch (Exception e){
 
-            return new Pais();
+            return new Pais("Espana");
         }
 
     }

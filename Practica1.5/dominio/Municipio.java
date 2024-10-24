@@ -42,9 +42,10 @@ public class Municipio implements Serializable {
     public String toString(){
 
         StringBuilder texto = new StringBuilder();
-        texto.append("El municipio de " +nombreMunicipio +" con "+ getPoblacion() +" habitantes consta de las siguientes Localidades: \n \t");
+        texto.append("El municipio de " +nombreMunicipio +" con "+ getPoblacion() +" habitantes consta de las siguientes Localidades: \n");
         for(Localidad localidad : localidades){
-            texto.append(localidad.toString()+"\n \t");
+            
+            texto.append("\t \t" + localidad.toString()+"\n ");
         }
 
         return texto.toString();

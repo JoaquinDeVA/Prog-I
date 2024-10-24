@@ -10,7 +10,7 @@ public class Localidad implements Serializable {
     public Localidad ( String nombre, int poblacion){
 
         this.nombre = nombre;
-        this.poblacion= poblacion;
+        this.poblacion = poblacion;
     }
     public String setNombre ( String nombre_){
 
@@ -32,7 +32,7 @@ public class Localidad implements Serializable {
     }
     @Override
     public String toString(){
-        return nombre +" Poblacion: " + poblacion + " Habitantes";
+        return nombre +", poblacion: " + poblacion + " Habitantes";
     }
     
 }

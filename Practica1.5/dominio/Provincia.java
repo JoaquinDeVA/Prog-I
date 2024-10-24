@@ -13,6 +13,10 @@ public class Provincia implements Serializable{
         nombre=nombreProvincia;
         municipios = new ArrayList<>();
     }
+    public String getNombre(){
+
+        return nombre;
+    }
     public Provincia add(Municipio municipio){
 
         municipios.add(municipio);
@@ -43,10 +47,10 @@ public class Provincia implements Serializable{
 
         int n=1;
         StringBuilder texto = new StringBuilder();
-        texto.append("La provincia de "+nombre+" con "+ getPoblacion() +" habitantes consta de los siguientes municipios: \n \t");
+        texto.append("La provincia de "+nombre+" con "+ getPoblacion() +" habitantes consta de los siguientes municipios: \n");
         for(Municipio municipio : municipios){
            
-            texto.append(n+") "+municipio.toString());
+            texto.append("\t"+ n+"- "+municipio.toString());
             n++;
         }
         return texto.toString();

@@ -1,12 +1,14 @@
 package aplicacion;
 
-import dominio.*;
-
+import interfaz.*;
 public class Principal{
 
     public static void main(String[] args){
 
-        //Provamos que podemos crear e imprimir por pantalla una provincia (Madrid con dos municipios y sus correspondientes localidades)
+        Interfaz interfaz = new Interfaz();
+        interfaz.InterfazUsuario();
+        
+        /*Provamos que podemos crear e imprimir por pantalla una provincia (Madrid con dos municipios y sus correspondientes localidades)
         Provincia madrid = new Provincia("Madrid");
         Municipio uno = new Municipio("Alcala de Henares");
         Municipio dos = new Municipio("Alcorcón");
@@ -21,6 +23,6 @@ public class Principal{
         dos.add(dosUno);
         dos.add(dosDos);
         System.out.print(madrid.toString());
-
+        */
     }
 }
