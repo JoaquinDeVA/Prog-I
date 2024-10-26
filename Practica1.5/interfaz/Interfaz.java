@@ -44,6 +44,9 @@ public class Interfaz {
             }else if(x==4){ //Añadir localidad
 
                 AnnadirLocalidad();
+            }else if(x==5){ //Leer
+            
+            leer();
             }else{
 
                 System.out.println("La opcion seleccionada no existe");
@@ -140,8 +143,46 @@ public class Interfaz {
         return 1;
        }
     }
+    public  void leer(){
+            
+        String nombreP, nombreM, nombreL;
+        do {
+            System.out.print("Introduce el nombre de la provincia (<enter> para finalizar: ");
+            nombreP=sc.nextLine();
+            if(!nombreP.equals("")){
+                
+                Provincia provincia=new Provincia(nombreP);
+                do {
+                    
+                    System.out.print("Introduce el nombre del municipio (<enter> para finalizar: ");
+                    nombreM=sc.nextLine();
+                    if(!nombreM.equals("")){
+                        
+                        Municipio municipio=new Municipio(nombreM);
+                        do {
+                        
+                            System.out.print("Introduce el nombre de la localidad (<enter> para finalizar: ");
+                            nombreL=sc.nextLine();
+                            if(!nombreL.equals("")){
+                                
+                                System.out.print("Introduce la población de la localidad: ");
+                                int poblacion=sc.nextInt();
+                                sc.nextLine();
+                                Localidad localidad=new Localidad(nombreL,poblacion);
+                                municipio.add(localidad);
+                            }
+                        } while (!nombreL.equals(""));
+                    provincia.add(municipio);
+                    }
+                } while (!nombreM.equals(""));
+            p.add(provincia);
+            }
+        }
+    while (!nombreP.equals(""));
+
+    }
     private void imprimir(){
 
-        System.out.println("Opciones:\n 0.Cerrar\n 1.Listar provincias\n 2.Annadir Provincia\n 3.Annadir Municipio\n 4.Annadir Localidad");
+        System.out.println("Opciones:\n 0.Cerrar\n 1.Listar provincias\n 2.Annadir Provincia\n 3.Annadir Municipio\n 4.Annadir Localidad \n 5.Leer");
     }
 }
