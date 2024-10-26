@@ -56,61 +56,72 @@ public class Interfaz {
         }
     }
     private void AnnadirProvincia(){
-        try{
-            System.out.println("Introduza el nombre de la provincia:");
-            p.add(new Provincia(sc.next()));
-    
-        } catch (Exception e){
-            
-            System.out.println(e);
-            System.out.println("El tipo de dato introducido no existe");
-        }
+
+        System.out.println("Introduza el nombre de la provincia:");
+        p.add(new Provincia(sc.next()));
     }
     private void AnnadirMunicipio(){
 
+        int prov;
         if(p.size() == 0){
 
             System.out.println("No hay provincias a las que annadir municipios");
             return;
         }
-        try{
-            for(int i=0;i<p.size();i++){
+        System.out.println("PROVINCIAS:");
+        for(int i=0;i<p.size();i++){
 
-                System.out.println(p.getProvincia(i).getNombre());
-            }
-            System.out.println("Introduzca el indice de la provincia a la que annadir y el nombre del municipio");
-            p.getProvincia(sc.nextInt()).add( new Municipio(sc.next()));
-        } catch (Exception e){System.out.println(e);}
+            System.out.println(i + " - " + p.getProvincia(i).getNombre());
+        }
+        System.out.println("Introduzca primero el indice de la provincia a la que annadir y despues el nombre del municipio");
+        prov = sc.nextInt();
+        if(prov < p.size() && prov >= 0){
+        p.getProvincia(prov).add( new Municipio(sc.next()));
+        }
+        else{
+
+            System.out.println("valor fuera de rango");
+        }
     }
     private void AnnadirLocalidad(){
 
+        int prov,mun;
         if(p.size() == 0){
 
             System.out.println("No hay provincias a las que annadir localidades");
             return;
         }
-        int prov,mun;
+        System.out.println("PROVINCIAS:");
         for(int i=0;i<p.size();i++){
 
-            System.out.println(p.getProvincia(i).getNombre());
+            System.out.println(i+" - "+p.getProvincia(i).getNombre());
         }
         System.out.println("Introduzca el indice de la provincia a la que annadir");
         prov= sc.nextInt();
-        if(prov <p.size()){
+        if(prov <p.size() && prov >= 0){
            
             if(p.getProvincia(prov).size() == 0){
 
                 System.out.println("No hay municipios a las que annadir localidades");
                 return;
             }
+            System.out.println("MUNICIPIOS:");
             for(int i=0;i<p.getProvincia(prov).size();i++){
 
-                System.out.println(p.getProvincia(prov).getMunicipio(i).getNombre());
+                System.out.println(i+" - "+p.getProvincia(prov).getMunicipio(i).getNombre());
             }
-            System.out.println("Introduzca el indice del municipio a la que annadir");
+            System.out.println("Introduzca el indice del municipio al que annadir");
             mun = sc.nextInt();
+            if(mun < p.getProvincia(prov).size() && mun >= 0){
             System.out.println("Introduzca el nombre y numero de habitantes de la localidad");
             p.getProvincia(prov).getMunicipio(mun).add(new Localidad(sc.next(),sc.nextInt()));
+            }
+            else{
+                System.out.println("valor fuera de rango");
+            }
+        } 
+        else{
+            System.out.println("valor fuera de rango");
         }
     }
     private int Opcion(){
@@ -118,9 +129,8 @@ public class Interfaz {
         int x=0;
         try{
         
-        System.out.println("Introduzca la opcion a elegir:");
-        
-        x= sc.nextInt();
+            System.out.println("Introduzca la opcion a elegir:");
+            x= sc.nextInt();
             sc.nextLine();
             return x;
        } 
