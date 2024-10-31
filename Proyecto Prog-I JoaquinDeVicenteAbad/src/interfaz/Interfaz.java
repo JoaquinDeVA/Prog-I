@@ -29,6 +29,7 @@ public class Interfaz {
 
     public Interfaz(){
         
+        catalogo = new ListaOrdenadores();
         catalogo.leer();
     }
 
@@ -79,8 +80,8 @@ public class Interfaz {
     }
     private int opciones(){//Imprime las diferentes opciones por pantalla
 
-        System.out.println(" OPCIONES:\n"+"0.Cerrar \n"+"1.Imprimir Catalogo \n"+"2.Annadir un Ordenador \n"+"3.Eliminar un Ordenador \n"+"4.Modificar un Ordenador\n");
-        System.out.println("Introduzca la opcion a elegir");
+        System.out.println("\tOPCIONES:\n"+" 0.Cerrar \n"+" 1.Imprimir Catalogo \n"+" 2.Annadir un Ordenador \n"+" 3.Eliminar un Ordenador \n"+" 4.Modificar un Ordenador\n");
+        System.out.println("Introduzca la opcion a elegir:");
         return sc.nextInt();       
     }
     private void imprimir(){//Imprime el catalogo
@@ -95,7 +96,7 @@ public class Interfaz {
     }
     private void aniadir(){ // añade un ordenador al catalogo
 
-        System.out.println("Introduzca los siguientes parametros: Modelo,si se trata de un portatil y precio");
+        System.out.println("Introduzca los siguientes parametros: Modelo,si se trata de un portatil(true/false) y precio");
         catalogo.annadir(new Ordenador(sc.next(),sc.nextBoolean(),sc.nextDouble()));
         exito();
     }
