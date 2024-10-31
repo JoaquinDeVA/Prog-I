@@ -22,11 +22,7 @@ public class Ordenador implements Serializable {
     }
     public void setPortatil(){
         //Como el constructor siempre define un valor cambia el valor por el contrario
-        if(portatil == false){
-            portatil = true;
-        }else{
-            portatil = false;
-        }
+        portatil = !portatil;
     }
     public void setPrecio(double precio){
         
@@ -48,7 +44,11 @@ public class Ordenador implements Serializable {
 
     public String toString(){
         
-        return "{Modelo: "+modelo+", Portatil: "+portatil+", Precio: "+precio+"}";
+        StringBuilder sb = new StringBuilder();
+        sb.append("{Modelo: ").append(modelo)
+        .append(", Portatil: ").append(portatil)
+        .append(", Precio: ").append(precio).append("}");
+        return sb.toString();
     }
 
 }
