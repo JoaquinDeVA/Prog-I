@@ -1,4 +1,4 @@
-P=Main
+P=Principal
 MAIN_CLASS=aplicacion.$(P)
 SRC_DIR=./src
 OUT_DIR=bin
