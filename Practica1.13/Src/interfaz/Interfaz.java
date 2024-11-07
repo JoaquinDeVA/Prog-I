@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class Interfaz {
 
-    private Agenda agenda;
+    private Libreta agenda;
     private Scanner sc = new Scanner(System.in);
     
     public Interfaz(){
 
-        agenda = Agenda.leer();
+        agenda = Libreta.leer();
     }
     public void InterfazUsuario(){
 
@@ -41,6 +41,10 @@ public class Interfaz {
 
                 modificar(instr[1],instr[2],instr[3],instr[4]);
             }
+            else if(instr[0].equals("search")){
+                
+                buscar(instr[1],instr[2]);
+            }
             else if (instr[0].equals("exit")){
                 
                 agenda.guardar();
@@ -52,10 +56,7 @@ public class Interfaz {
 
         String[] resul;
         String instr = sc.nextLine();
-        
         resul = instr.split(",");        
-
-
 
         return resul;        
     }
@@ -66,32 +67,48 @@ public class Interfaz {
     }
     private void help(){
 
-
         System.out.println("Instrucciones disponibles: \n -help para este menu de ayuda \n -list para mostrar por pantalla los contactos \n"
         +" -add para aniadir con el siguiente formato: \n \t add,<Nombre>,<Apellidos>,<NumeroDeTelefono>,<Email> \n"+
-        " -remove para borrar con el siguiente formato: \n \t remove,<Nombre>,<Apellidos> \n -exit para cerrar la agenda\n"+
+        " -remove para borrar con el siguiente formato: \n \t remove,<Nombre>,<Apellidos> \n" +
         " -modify para modificar con el siguiente formato: \n \t modify,<Nombre>,<Apellidos> (del contacto a modificar)"+
-         ",<valor a modificar>,<valor nuevo> \n \t \tEJEMPLO: modify,Joaquin,de Vicente,telefono,123456789\n donde los valores modificable son:"+
-         " nombre,apellidos,telefono,email");
+         ",<valor a modificar>,<valor nuevo> \n \t \tEJEMPLO: modify,Joaquin,de Vicente,telefono,123456789 Valores modificables:"+
+         " nombre,apellidos,telefono,email" + "\n -search para buscar un contacto Con el siguiente formato: \n \t search,<Nombre>,<Apellidos>"+
+          "\n -exit para cerrar la agenda");
     }
     private void aniadir(String nombre,String apellido,String numeroDeTelefono,String email ){
+        
         agenda.add(new Contacto(nombre,apellido,numeroDeTelefono,email));
         System.out.println("Contacto aniadido");
     }
     private void remove(String nombre,String apellido){
         
-        agenda.borrarContacto(new Contacto(nombre,apellido));
-        System.out.println("Contacto borrado");
+        if(agenda.borrarContacto(new Contacto(nombre,apellido))){
+        
+            System.out.println("Contacto borrado");
+            return;
+        }
+        System.out.println("Contacto no encontrado");
     }
     private void modificar(String nombre,String apellido,String atributo,String nuevo){
 
-        if(atributo.equals("nombre") || atributo.equals("apellidos") || atributo.equals("telefono") || atributo.equals("email")){
+        if(agenda.modificarContacto(new Contacto(nombre,apellido), atributo, nuevo)){
             
-            agenda.modificarContacto(new Contacto(nombre,apellido), atributo, nuevo);
             System.out.println("Contacto modificado");
         } else{
            
-            System.out.println("ATRIBUTO NO VALIDO");
+            System.out.println("El contacto no existe o el atributo introducido no es correcto");
         }
     }
+    private void buscar(String nombre, String apellidos){
+
+        Contacto c = agenda.buscar(new Contacto(nombre,apellidos));
+        if(c == null){
+
+            System.out.println("El contacto no esta registrado");
+            return;
+        }
+
+        System.out.println("El contacto esta registrado en la agenda");
+        System.out.println(c.toString());
+        }
 }

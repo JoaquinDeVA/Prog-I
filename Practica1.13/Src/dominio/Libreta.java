@@ -3,11 +3,11 @@ package dominio;
 import java.util.ArrayList;
 import java.io.*;
 
-public class Agenda implements Serializable{
+public class Libreta implements Serializable{
     
     ArrayList<Contacto> lista;
 
-    public Agenda() {
+    public Libreta() {
         lista = new ArrayList<>();
     }
     public Contacto buscar(Contacto c){
@@ -19,7 +19,7 @@ public class Agenda implements Serializable{
         }
         return lista.get(p);
     }
-    public Agenda add(Contacto c){
+    public Libreta add(Contacto c){
 
         lista.add(c);
         return this;
@@ -36,45 +36,59 @@ public class Agenda implements Serializable{
     
         return sb.toString();
     }
-    public void modificarContacto(Contacto contacto,String modificar,String valor){
+    public boolean modificarContacto(Contacto contacto,String modificar,String valor){
 
-        if(modificar.equals("nombre")){
+        if (lista.contains(contacto)){
+            
+            if(modificar.equals("nombre")){
 
-            buscar(contacto).SetNombre(valor);
+                buscar(contacto).SetNombre(valor);
+                return true;
+            }
+            else if(modificar.equals("apellidos")){
+
+                buscar(contacto).setApellidos(valor);
+                return true;
+            }
+            else if(modificar.equals("telefono")){
+
+                buscar(contacto).setTelefono(valor);
+                return true;
+            }
+            else if(modificar.equals("email")){
+
+                buscar(contacto).setEmail(valor);
+                return true;
+            }
         }
-        else if(modificar.equals("apellidos")){
-
-            buscar(contacto).setApellidos(valor);
-        }
-        else if(modificar.equals("telefono")){
-
-            buscar(contacto).setTelefono(valor);
-        }
-        else if(modificar.equals("email")){
-
-            buscar(contacto).setEmail(valor);
-        }
+        return false;
     }
-    public void borrarContacto(Contacto contacto){
-
-        lista.remove(contacto);
+    public boolean borrarContacto(Contacto contacto){
+       
+        int i = lista.indexOf(contacto);
+        if (i != -1) {
+            
+            lista.remove(i);
+            return true;
+        }
+        return false;
     }
     public int size(){
 
         return lista.size();
     }
-    public static Agenda leer(){
+    public static Libreta leer(){
 
         try{
            
             ObjectInputStream oi = new ObjectInputStream(new FileInputStream ("AGENDA.dat"));
-            Agenda agenda = (Agenda) oi.readObject();
+            Libreta agenda = (Libreta) oi.readObject();
             oi.close();
             return agenda;
         
         }catch (Exception e){
 
-            return new Agenda();
+            return new Libreta();
         }
     }
     public void guardar(){
