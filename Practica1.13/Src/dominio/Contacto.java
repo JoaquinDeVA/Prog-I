@@ -9,6 +9,7 @@ public class Contacto implements Serializable{
 	private String apellidos;
 	private String telefono;
 	private String email;
+	private boolean favorito;
 
 	public Contacto(String nombre, String apellidos, String telefono, String email){
 	
@@ -16,6 +17,7 @@ public class Contacto implements Serializable{
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.email = email;
+		favorito = false;
 	}
 	public Contacto(String nombre,String apellidos){
 	
@@ -30,41 +32,50 @@ public class Contacto implements Serializable{
 	
 	public String getNombre(){
 	
-	return nombre;
+		return nombre;
 	}
 	public String getApellidos(){
 	
-	return apellidos;
+		return apellidos;
 	}
 	public String getTelefono(){
 	
-	return telefono;
+		return telefono;
 	}
 	public String getEmail(){
 	
-	return email;
+		return email;
+	}
+	public boolean getFavorito(){
+
+		return favorito;
 	}
 	
 	public Contacto SetNombre(String nombre){
-	
-	this.nombre = nombre;
-	return this;
+		
+		this.nombre = nombre;
+		return this;
 	}
 	
 	public Contacto setApellidos(String apellidos){
-	
-	this.apellidos=apellidos;
-	return this;
+		
+		this.apellidos=apellidos;
+		return this;
 	}
 	public Contacto setTelefono (String telefono){
-	
-	this.telefono = telefono;
-	return this;
+		
+		this.telefono = telefono;
+		return this;
 	}
 	public Contacto setEmail (String email){
 	
-	this.email = email;
-	return this;
+		this.email = email;
+		return this;
+	}
+	public Contacto setFavorito (){
+
+		favorito = !favorito;
+		return this;
 	}
 
 	public String toString(){ 

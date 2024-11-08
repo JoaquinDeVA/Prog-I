@@ -45,6 +45,14 @@ public class Interfaz {
                 
                 buscar(instr[1],instr[2]);
             }
+            else if(instr[0].equals("setFavorite")){
+
+                setFavorito(instr[1],instr[2]);
+            }
+            else if(instr[0].equals("favorites")){
+
+                favoritos();
+            }
             else if (instr[0].equals("exit")){
                 
                 agenda.guardar();
@@ -73,7 +81,8 @@ public class Interfaz {
         " -modify para modificar con el siguiente formato: \n \t modify,<Nombre>,<Apellidos> (del contacto a modificar)"+
          ",<valor a modificar>,<valor nuevo> \n \t \tEJEMPLO: modify,Joaquin,de Vicente,telefono,123456789 Valores modificables:"+
          " nombre,apellidos,telefono,email" + "\n -search para buscar un contacto Con el siguiente formato: \n \t search,<Nombre>,<Apellidos>"+
-          "\n -exit para cerrar la agenda");
+         "\n -setFavorite para cambiar a favorito o no un contacto con el siguiente formato \n\t setFavorite,<Nombre>,<Apellidos>"
+         +"\n -favorites para imprimir por pantalla los contactos favoritos"+"\n -exit para cerrar la agenda");
     }
     private void aniadir(String nombre,String apellido,String numeroDeTelefono,String email ){
         
@@ -98,6 +107,18 @@ public class Interfaz {
            
             System.out.println("El contacto no existe o el atributo introducido no es correcto");
         }
+    }
+    private void setFavorito(String nombre,String apellido){
+
+       if(agenda.cambiarFavorito(new Contacto(nombre,apellido))){
+            System.out.println("Cambio ejecutado");
+            return;
+       }
+       System.out.println("El contacto no existe");
+    }
+    private void favoritos(){
+
+       System.out.println(agenda.favoritos());
     }
     private void buscar(String nombre, String apellidos){
 

@@ -77,6 +77,26 @@ public class Libreta implements Serializable{
 
         return lista.size();
     }
+    public boolean cambiarFavorito(Contacto contacto){
+
+        Contacto c = buscar(contacto);
+        if (c != null){
+            c.setFavorito();
+            return true;
+        }
+        return false;
+    }
+    public String favoritos(){
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Contactos favoritos: \n");
+        for(Contacto contacto : lista){
+            if(contacto.getFavorito()){
+                sb.append(contacto.toString());
+            }
+        }
+        return sb.toString();
+    }
     public static Libreta leer(){
 
         try{
