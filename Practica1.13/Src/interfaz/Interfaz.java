@@ -1,7 +1,7 @@
 package interfaz;
 
 import dominio.*;
-
+import excepciones.*;
 import java.util.Scanner;
 
 public class Interfaz {
@@ -86,35 +86,66 @@ public class Interfaz {
     }
     private void aniadir(String nombre,String apellido,String numeroDeTelefono,String email ){
         
-        agenda.add(new Contacto(nombre,apellido,numeroDeTelefono,email));
-        System.out.println("Contacto aniadido");
+        try{
+            
+            agenda.add(new Contacto(nombre,apellido,numeroDeTelefono,email));
+            System.out.println("Contacto aniadido");
+        } catch (ContactoDuplicadoException e){
+
+            System.out.println("El contacto: " + e.getContacto().getNombre() + " " +e.getContacto().getApellidos() + " ya existe" );
+        }
     }
     private void remove(String nombre,String apellido){
         
-        if(agenda.borrarContacto(new Contacto(nombre,apellido))){
-        
-            System.out.println("Contacto borrado");
-            return;
+        try{
+            
+            agenda.borrarContacto(new Contacto(nombre,apellido));
+        } catch(NoEncontradoException e){ 
+            
+            System.out.println("El contacto: " + e.getContacto().getNombre() + " " + e.getContacto().getApellidos()+" no se ha encontrado");
         }
-        System.out.println("Contacto no encontrado");
     }
     private void modificar(String nombre,String apellido,String atributo,String nuevo){
 
-        if(agenda.modificarContacto(new Contacto(nombre,apellido), atributo, nuevo)){
+        try{
             
-            System.out.println("Contacto modificado");
-        } else{
+            Libreta libreta = agenda.modificarContacto(new Contacto(nombre,apellido), atributo, nuevo);
+            if(libreta == null){
+
+                System.out.println("El atributo a modificar es incorrecto");
+            }
+        } catch (NoEncontradoException e){
            
-            System.out.println("El contacto no existe o el atributo introducido no es correcto");
+            System.out.println("El contacto: "+e.getContacto().getNombre() + " " + e.getContacto().getApellidos() + " no existe ");
+            System.out.println("¿Desea añadirlo? Y/N");
+            String aniadir = sc.nextLine();
+            if(aniadir.equals("Y")){
+                try{
+                    
+                    System.out.println("introduzca su numero de telefono y su correo divididos por comas");
+                    String[] datos = procesarPeticion();
+                    agenda.add( new Contacto(e.getContacto().getNombre(),e.getContacto().getApellidos(),datos[0],datos[1]));
+                }catch(ContactoDuplicadoException excepcion){}
+            }
         }
     }
     private void setFavorito(String nombre,String apellido){
 
-       if(agenda.cambiarFavorito(new Contacto(nombre,apellido))){
+        try{
+            
+            agenda.cambiarFavorito(new Contacto(nombre,apellido));
             System.out.println("Cambio ejecutado");
-            return;
-       }
-       System.out.println("El contacto no existe");
+        }catch (NoEncontradoException e){
+
+            System.out.println("El contacto: "+e.getContacto().getNombre() + " " + e.getContacto().getApellidos() + " no existe ");
+            System.out.println("¿Desea añadirlo? Y/N");
+            if(sc.next().equals("Y")){
+                try{
+                    
+                    agenda.add(e.getContacto());
+                }catch(ContactoDuplicadoException excepcion){}
+            }
+        }
     }
     private void favoritos(){
 

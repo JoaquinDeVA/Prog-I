@@ -1,6 +1,9 @@
 package dominio;
 
 import java.util.ArrayList;
+
+import excepciones.ContactoDuplicadoException;
+import excepciones.NoEncontradoException;
 import java.io.*;
 
 public class Libreta implements Serializable{
@@ -19,8 +22,12 @@ public class Libreta implements Serializable{
         }
         return lista.get(p);
     }
-    public Libreta add(Contacto c){
+    public Libreta add(Contacto c) throws ContactoDuplicadoException{
 
+        if(lista.contains(c)){
+
+            throw new ContactoDuplicadoException(c);
+        }
         lista.add(c);
         return this;
     }
@@ -36,55 +43,57 @@ public class Libreta implements Serializable{
     
         return sb.toString();
     }
-    public boolean modificarContacto(Contacto contacto,String modificar,String valor){
+    public Libreta modificarContacto(Contacto contacto,String modificar,String valor) throws NoEncontradoException{
 
         if (lista.contains(contacto)){
             
             if(modificar.equals("nombre")){
 
                 buscar(contacto).SetNombre(valor);
-                return true;
+                return this;
             }
             else if(modificar.equals("apellidos")){
 
                 buscar(contacto).setApellidos(valor);
-                return true;
+                return this;
             }
             else if(modificar.equals("telefono")){
 
                 buscar(contacto).setTelefono(valor);
-                return true;
+                return this;
             }
             else if(modificar.equals("email")){
 
                 buscar(contacto).setEmail(valor);
-                return true;
+                return this;
             }
+            return null;
         }
-        return false;
+        throw new NoEncontradoException(contacto);
     }
-    public boolean borrarContacto(Contacto contacto){
+    public Libreta borrarContacto(Contacto contacto) throws NoEncontradoException{
        
         int i = lista.indexOf(contacto);
         if (i != -1) {
             
             lista.remove(i);
-            return true;
+            return this;
         }
-        return false;
+        throw new NoEncontradoException(contacto); 
     }
     public int size(){
 
         return lista.size();
     }
-    public boolean cambiarFavorito(Contacto contacto){
+    public Libreta cambiarFavorito(Contacto contacto) throws NoEncontradoException{
 
         Contacto c = buscar(contacto);
         if (c != null){
+            
             c.setFavorito();
-            return true;
+            return this;
         }
-        return false;
+        throw new NoEncontradoException(contacto);
     }
     public String favoritos(){
 
