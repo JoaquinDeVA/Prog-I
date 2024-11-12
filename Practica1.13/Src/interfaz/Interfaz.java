@@ -92,7 +92,7 @@ public class Interfaz {
             System.out.println("Contacto aniadido");
         } catch (ContactoDuplicadoException e){
 
-            System.out.println("El contacto: " + e.getContacto().getNombre() + " " +e.getContacto().getApellidos() + " ya existe" );
+            System.out.println("\n El contacto: " + e.getContacto().getNombre() + " " +e.getContacto().getApellidos() + " ya existe" );
         }
     }
     private void remove(String nombre,String apellido){
@@ -118,13 +118,14 @@ public class Interfaz {
            
             System.out.println("El contacto: "+e.getContacto().getNombre() + " " + e.getContacto().getApellidos() + " no existe ");
             System.out.println("¿Desea añadirlo? Y/N");
-            String aniadir = sc.nextLine();
-            if(aniadir.equals("Y")){
+            if(sc.next().equals("Y")){
+                sc.nextLine();
+                System.out.println("introduzca su numero de telefono y despues su correo");
+                String telefono = sc.next();
+                String correo = sc.next();
                 try{
-                    
-                    System.out.println("introduzca su numero de telefono y su correo divididos por comas");
-                    String[] datos = procesarPeticion();
-                    agenda.add( new Contacto(e.getContacto().getNombre(),e.getContacto().getApellidos(),datos[0],datos[1]));
+
+                    agenda.add( new Contacto(e.getContacto().getNombre(),e.getContacto().getApellidos(),telefono,correo));
                 }catch(ContactoDuplicadoException excepcion){}
             }
         }
@@ -136,14 +137,18 @@ public class Interfaz {
             agenda.cambiarFavorito(new Contacto(nombre,apellido));
             System.out.println("Cambio ejecutado");
         }catch (NoEncontradoException e){
-
             System.out.println("El contacto: "+e.getContacto().getNombre() + " " + e.getContacto().getApellidos() + " no existe ");
             System.out.println("¿Desea añadirlo? Y/N");
             if(sc.next().equals("Y")){
+                
+                System.out.println("introduzca su numero de telefono y despues su correo");
+                String telefono = sc.next();
+                String correo = sc.next();
                 try{
-                    
-                    agenda.add(e.getContacto());
+
+                    agenda.add( new Contacto(e.getContacto().getNombre(),e.getContacto().getApellidos(),telefono,correo));
                 }catch(ContactoDuplicadoException excepcion){}
+                sc.nextLine();
             }
         }
     }
