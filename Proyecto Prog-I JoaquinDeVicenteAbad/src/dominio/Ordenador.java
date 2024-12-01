@@ -51,5 +51,23 @@ public class Ordenador implements Serializable {
         return sb.toString();
     }
 
+    public boolean equals(Object o){
+
+        if(o == null){
+            
+            return false;
+        }
+        if(o.getClass() != this.getClass()){
+
+            return false;
+        }
+        
+        Ordenador ordenador = (Ordenador) o;
+        return ordenador.getModelo().equals(this.getModelo());
+    }
+    public int hashCode(){
+
+        return this.modelo.hashCode();
+    }
 }
 

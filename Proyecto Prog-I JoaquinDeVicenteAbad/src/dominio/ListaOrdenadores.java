@@ -2,6 +2,7 @@ package dominio;
 
 import java.util.ArrayList;
 import java.io.*;
+import excepciones.*;
 
 public class ListaOrdenadores implements Serializable{
 
@@ -28,9 +29,12 @@ public class ListaOrdenadores implements Serializable{
     
         ListaOrdenadores = new ArrayList<>();
     }
-    public void annadir(Ordenador OrdenadorNuevo){
+    public void annadir(Ordenador ordenador) throws YaExisteException{
 
-        ListaOrdenadores.add(OrdenadorNuevo);
+        if(ListaOrdenadores.contains(ordenador)){
+            throw new YaExisteException(ordenador);
+        }
+        ListaOrdenadores.add(ordenador);
     }
     public void eliminar(int i){
         ListaOrdenadores.remove(ListaOrdenadores.get(i));

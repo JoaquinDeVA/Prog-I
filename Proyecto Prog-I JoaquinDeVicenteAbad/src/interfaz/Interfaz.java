@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.io.*;
 import dominio.*;
+import excepciones.YaExisteException;
 
 public class Interfaz {
 /* La clase Interfaz contiene la interfaz de texto que permite al usuario gestionar
@@ -96,9 +97,13 @@ public class Interfaz {
     }
     private void aniadir(){ // añade un ordenador al catalogo
 
+        try{
         System.out.println("Introduzca los siguientes parametros: Modelo,si se trata de un portatil(true/false) y precio");
         catalogo.annadir(new Ordenador(sc.next(),sc.nextBoolean(),sc.nextDouble()));
         exito();
+        } catch (YaExisteException e){
+            System.out.println("El ordenador con modelo: "+ e.getOrdenador().getModelo() + ". Ya existe en el catálogo");
+        }
     }
     private void eliminar(){ // Elimina un ordenador del catalogo
         
