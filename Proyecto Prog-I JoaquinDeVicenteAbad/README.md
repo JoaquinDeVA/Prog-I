@@ -42,7 +42,7 @@ Cerramos el programa y se guardan los datos.
 El código esta dividido en tres paquetes. Uno llamando aplicacion con nuestra clase main. Otro llamado dominio donde se define la clase
 Ordenador y su clase ArrayList ListaOrdenadores. Por ultimo el paquete interfaz con la clase Interfaz.
 
-![Diagrama UML](imagenes/imageUML.png)
+![Diagrama UML](imagenes/image2UML.png)
 ## Contribuciones
 
 Proyecto desarrollado en solitario.
