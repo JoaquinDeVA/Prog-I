@@ -16,13 +16,9 @@ public class Papeleta {
     }
 
     public Papeleta eliminarCandidato(Candidato candidato){
-
-       // if(preferencias.contains(candidato)){
         
-            preferencias.remove(candidato);
-            return this;
-        //}
-        
+        preferencias.remove(candidato);
+        return this;
     }
 
     public boolean contiene(Candidato candidato){

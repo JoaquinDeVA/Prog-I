@@ -47,15 +47,20 @@ public class Aplicacion {
         papeleta55.add(candidato1);
         papeleta55.add(candidato2);
         papeleta55.add(candidato3);
-
-        
         Papeleta papeleta5 = new Papeleta(papeleta55);
+
+        ArrayList<Candidato> papeleta66 = new ArrayList<>();
+        papeleta66.add(candidato2);
+        papeleta66.add(candidato1);
+        papeleta66.add(candidato3);
+        Papeleta papeleta6 = new Papeleta(papeleta66);
 
         papeletas.add(papeleta1);
         papeletas.add(papeleta2);
         papeletas.add(papeleta3);
         papeletas.add(papeleta4);
         papeletas.add(papeleta5);
+        papeletas.add(papeleta6);
 
         SistemaElecciones se = new SistemaElecciones(candidatos, papeletas);
         se.iniciarEleccion();

@@ -28,36 +28,57 @@ public class Eleccion {
         }
         return ganador;
     }
-    public Eleccion eliminarCandidatoConMenosVotos(){
+    public boolean eliminarCandidatoConMenosVotos(){
 
-        Candidato perdedor = candidatos.get(0);
+        if(candidatos.size() == 0){
+
+            return false;
+        }
+        int cantidad = candidatos.get(0).getVotos();
+        ArrayList<Candidato> perdedores = new ArrayList<>();
         for(Candidato candidato : candidatos){
-            
-            if(candidato.getVotos() < perdedor.getVotos()){
+           
+            if(candidato.getVotos() < cantidad){
                 
-                perdedor = candidato;
+                cantidad = candidato.getVotos();
             }
-            candidato.resetearVotos();
         }
-        candidatos.remove(perdedor);
+        for(Candidato candidato : candidatos){
 
-        for(Papeleta papeleta : papeletas){
+            if(candidato.getVotos() == cantidad){
 
-            papeleta.eliminarCandidato(perdedor);
+                for(Papeleta papeleta : papeletas){
+
+                    papeleta.eliminarCandidato(candidato);
+                }
+                perdedores.add(candidato);
+            }else{
+                candidato.resetearVotos();
+            }
         }
-        return this;
+
+        for(Candidato perdedor : perdedores){
+
+            candidatos.remove(perdedor);
+        }
+        return true;
     }
 
     public boolean comprobarMayoriaAbsoluta(Candidato ganador){
 
+        int total = 0;
         for(Candidato candidato : candidatos){
-
-            if(candidato.getVotos() == ganador.getVotos() && !candidato.equals(ganador)){
-
-                return false;
-            }
+            
+            total = total + candidato.getVotos();
         }
-        return true;
+        if(total%2 == 1){
+            total++;
+        }
+        if(ganador.getVotos() > total/2){
+
+            return true;
+        }
+        return false;
     }
 
     public boolean validarPapeletas(){

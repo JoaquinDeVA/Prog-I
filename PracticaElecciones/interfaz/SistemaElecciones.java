@@ -27,12 +27,16 @@ public class SistemaElecciones {
            
             
             ganador = eleccion.realizarRecuento();
-
             if(eleccion.comprobarMayoriaAbsoluta(ganador)){
             
                 break;
             }
-            eleccion.eliminarCandidatoConMenosVotos();
+
+            if(!eleccion.eliminarCandidatoConMenosVotos()){
+
+                System.out.println("Eleccion terminada sin ganador");
+                break;
+            }
             
         }
         
